@@ -26,7 +26,7 @@ const SoloNote = (props) => {
             <Card.Body>
             <Card.Title>Subject: {foundNote.subject}</Card.Title>
             <Card.Subtitle><em>Created: {new Date(foundNote.created_at).toDateString()}</em></Card.Subtitle>
-            <Card.Text>Content: {foundNote.content} <br></br>
+            <Card.Text>{foundNote.content} <br></br>
             <em>{foundNote.shareable === true ? "Public Note" : "Private Note"}</em><br></br>
             Category: {findCategoryName(foundNote)}</Card.Text>
             <Button variant="outline-dark" onClick={handleClick}>Edit/Delete Note</Button>
