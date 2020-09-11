@@ -1,16 +1,8 @@
-// import React from 'react';
-
-// const SignUp = () =>{
-//     return (
-//         <h1> Testing Sign Up Route</h1>
-//     )
-// }
-
-// export default SignUp
-
 import React from 'react';
-import { signingUp } from '../actions/login'
+import { signingUp } from '../actions/login';
 import { connect } from 'react-redux';
+import {Button, Form, Container} from 'react-bootstrap';
+
 
 class SignUp extends React.Component{
     constructor(props){
@@ -67,12 +59,21 @@ class SignUp extends React.Component{
         return (
             <div>
                 {this.state.error ? <h1>{this.state.error}</h1>: null}
-                <form onSubmit={this.handleSubmit}>
-                    <input name='username' placeholder='username' onChange={this.handleInput} value={this.state.username}></input>
-                    <input type='password' name='password' placeholder='password' onChange={this.handleInput} value={this.state.password}></input>
-                    <input type='password' name='confirmedPassword' placeholder='confirm password' onChange={this.handleInput} value={this.state.confirmedPassword}></input>
-                    <button type="submit" className="btn btn-default">Sign Up</button>
-                </form>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formUsername">
+                    <Form.Control name='username' placeholder='Enter username' onChange={this.handleInput} value={this.state.username}/>
+                    </Form.Group>
+                    <Form.Group controlId="formPassword">
+
+                    <Form.Control type='password' name='password' placeholder='Enter password' onChange={this.handleInput} value={this.state.password}/>
+                    </Form.Group>
+                    
+                    <Form.Group controlId="formConfirmPassword">
+                    <Form.Control type='password' name='confirmedPassword' placeholder='Confirm password' onChange={this.handleInput} value={this.state.confirmedPassword}/>
+                    </Form.Group>
+
+                    <Button variant="outline-dark" type="submit" className="btn btn-default">Sign Up</Button>
+                </Form>
             </div>
         )
     }

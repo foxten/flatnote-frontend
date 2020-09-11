@@ -11,11 +11,12 @@ import NewNote from './components/NewNote'
 
 import './App.css';
 
-function App() {
+function App(props) {
+  console.log(props)
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Flatnote</h1>
+      {/* <header className="App-header"> */}
+        {/* <h1>Flatnote</h1> */}
       <BrowserRouter>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/notes' component={Dashboard} />
@@ -26,9 +27,10 @@ function App() {
         <Route path='/new' component={NewNote} />
         <Route path='/view' component={SoloNote} />
       </BrowserRouter>
-      </header>
+      {/* </header> */}
     </div>
   );
 }
+
 
 export default App;

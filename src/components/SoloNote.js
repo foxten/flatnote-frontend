@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Button, Card} from 'react-bootstrap';
+import {Button, Card, Container} from 'react-bootstrap';
+import Navigation from './Navigation';
 
 
 const SoloNote = (props) => {
@@ -13,20 +14,32 @@ const SoloNote = (props) => {
         props.history.push(`/edit/${foundNote.id}`)
     }
     
+    const findCategoryName = note =>{
+        let found = props.categories.find(category => category.id === note.category_id)
+        return found.name
+    }
+
     return (
+        <Container>
+        <Navigation urlInfo={props.history}/>
         <Card>
-            <h5>Subject: {foundNote.subject}</h5>
-            <p>Created: {new Date(foundNote.created_at).toDateString()}</p>
-            <p>Content: {foundNote.content}</p>
-            <p>Public or Private: {foundNote.shareable === true ? "Public Note" : "Private Note"} </p>
-            <Button variant="outline-dark" onClick={handleClick}>Edit/Delete Note</Button><br></br>
+            <Card.Body>
+            <Card.Title>Subject: {foundNote.subject}</Card.Title>
+            <Card.Subtitle><em>Created: {new Date(foundNote.created_at).toDateString()}</em></Card.Subtitle>
+            <Card.Text>Content: {foundNote.content} <br></br>
+            <em>{foundNote.shareable === true ? "Public Note" : "Private Note"}</em><br></br>
+            Category: {findCategoryName(foundNote)}</Card.Text>
+            <Button variant="outline-dark" onClick={handleClick}>Edit/Delete Note</Button>
+            </Card.Body>
         </Card>
+        </Container>
+
     )
 }
 
 
 const mapStateToProps = state =>{
-    return {notes: state.notes}
+    return {notes: state.notes, categories: state.login.unique_categories}
 }
 
 export default connect(mapStateToProps, null)(SoloNote)

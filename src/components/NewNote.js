@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { newNote } from "../actions/notetaking";
+import {Button, Form, Container, Row, Col} from 'react-bootstrap';
+import Navigation from './Navigation';
 
 
 
@@ -50,29 +52,57 @@ class AddNote extends React.Component{
             .then(response => response.json())
                 .then(brandNewNote => {
                     this.props.newNote(brandNewNote)
-                    this.props.history.push('/notes')
+                    this.props.history.push(`/view/${brandNewNote.id}`)
                     console.log(brandNewNote)
                 })
 
     }
-
+    
     render(){
         console.log(this.state)
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Subject:</label><input name='subject' onChange={this.handleInput} value={this.state.subject}/><br></br>
-                    <label>Content:</label><textarea name='content' onChange={this.handleInput} value={this.state.content}/><br></br>
-                    <input type="checkbox" id="shareable" name="shareable" value={false} onChange={this.handleShare}></input>
-                    <label> Shareable</label><br></br>
-                        <select name="categories" id="categories" onChange={this.handleCategory}>
+            <Container>
+                <Row className="justify-content-end">
+                    <Navigation urlInfo={this.props.history}/>
+                </Row>
+
+                <Form onSubmit={this.handleSubmit}>
+                    <Row className="justify-content-md-center">
+                        <Col lg={10}>
+                            <Form.Group controlId="formSubject">
+                            <Form.Label>Subject:</Form.Label>
+                            <Form.Control name='subject' type='text' onChange={this.handleInput} value={this.state.subject}/>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                        <Col lg={10}>
+                            <Form.Group controlId="formContent">
+                            <Form.Label>Content:</Form.Label>
+                            <Form.Control as="textarea" name='content' onChange={this.handleInput} value={this.state.content}/>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    
+                    <Row className="justify-content-md-center">
+                    <Form.Group controlId="formCategory">
+                    <Form.Label>Category:</Form.Label><Form.Control as="select" name="categories" id="categories" onChange={this.handleCategory}>
                             {this.props.categories.map(category =>{
                                 return <option key={category.id} value={category.id}>{category.name}</option>
                             })}
-                        </select>
-                    <button type='submit'>Create Note</button>
-                </form>
-            </div>
+                    </Form.Control>
+                    </Form.Group>
+                    </Row>
+
+                    <Row className="justify-content-md-center">
+                        <Form.Group controlId="formShareable">
+                        <Form.Check type="checkbox" id="shareable" name="shareable" value={false} onChange={this.handleShare} label="Shareable"/>
+                        </Form.Group>
+                    </Row>
+
+                    <Button variant="outline-dark" type='submit'>Create Note</Button>
+                </Form>
+            </Container>
             
         )
     }

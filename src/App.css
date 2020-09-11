@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-color: #7998AB;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
 }
 
 .App-logo {
@@ -13,27 +21,36 @@
   }
 }
 
-.App-header {
-  background-color: #708D9E;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #B5EBD4;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.navbar-brand{
+  font-size: calc(5px + 2vmin);
+  margin-right: 10px;
+}
+
 .card {
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
-  background-color: #5E7685;
+  background-color: #708D9E;
+  font-size: calc(5px + 2vmin);
   margin: 20px ;
 }
+/* 
+.mr-auto.nav-item{
+  margin: 0px;
+
+} */
+
+.nav-item {
+  margin: 5px;
+  }
 
 @keyframes App-logo-spin {
   from {

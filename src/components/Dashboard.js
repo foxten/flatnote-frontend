@@ -16,7 +16,6 @@ class Dashboard extends React.Component{
         console.log(this.props)
     return (
         <div>
-        <h2>Welcome, {this.props.login.username}</h2>
         <Navigation urlInfo={this.props.history}/>
         <NotesContainer />
         </div>

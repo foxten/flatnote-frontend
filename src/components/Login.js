@@ -2,7 +2,7 @@ import React from 'react';
 import { loggingIn } from '../actions/login';
 import { addingNotes } from '../actions/notetaking';
 import { connect } from 'react-redux';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Container} from 'react-bootstrap';
 
 
 class Login extends React.Component{
@@ -48,6 +48,7 @@ class Login extends React.Component{
         console.log(this.state)
         return (
             <div>
+                <h1>Flatnote</h1>
                 {this.state.error ? <h1>{this.state.error}</h1>: null}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formUsername">
