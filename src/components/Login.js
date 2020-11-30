@@ -2,7 +2,7 @@ import React from 'react';
 import { loggingIn } from '../actions/login';
 import { addingNotes } from '../actions/notetaking';
 import { connect } from 'react-redux';
-import {Button, Form, Container} from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 
 
 class Login extends React.Component{
@@ -57,8 +57,6 @@ class Login extends React.Component{
                     <Form.Group controlId="formPassword">
                     <Form.Control name="password" type="password" placeholder="Enter password" onChange={this.handleInput} value={this.state.password}/>
                     </Form.Group>
-                    {/* <input name='username' placeholder='username' onChange={this.handleInput} value={this.state.username}></input> */}
-                    {/* <input type='password' name='password' placeholder='password' onChange={this.handleInput} value={this.state.password}></input> */}
                     <Button variant="outline-dark" type="submit" size="lg">Log In</Button>
                 </Form>
             </div>

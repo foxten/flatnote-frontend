@@ -4,7 +4,6 @@ import Navigation from './Navigation'
 import { connect } from 'react-redux';
 
 
-
 class Dashboard extends React.Component{
     componentDidMount(){
         if (this.props.login === null){

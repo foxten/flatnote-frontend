@@ -15,19 +15,15 @@ function App(props) {
   console.log(props)
   return (
     <div className="App">
-      {/* <header className="App-header"> */}
-        {/* <h1>Flatnote</h1> */}
       <BrowserRouter>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/notes' component={Dashboard} />
-        {/* <Route exact path='/notes' render={ routerProps => <Dashboard {...routerProps} />} /> */}
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route path='/edit' component={EditNote} />
         <Route path='/new' component={NewNote} />
         <Route path='/view' component={SoloNote} />
       </BrowserRouter>
-      {/* </header> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export default function notes (state=null, action){
+export default function notes (state=[], action){
     let index;
 
     switch(action.type){
@@ -10,11 +10,14 @@ export default function notes (state=null, action){
 
         case 'EDIT_NOTE':
             index = state.findIndex(note => note.id === action.note.id);
-            state.splice(index, 1, action.note)
+            state.splice(index, 1, action.note);
             return state;
 
         case 'DELETE_NOTE':
             return state.filter(note => note.id !== action.noteId);
+
+        // case 'FILTER_NOTES':
+        //     return state.filter(note => note.category_id === action.categoryId); 
 
         default:
             return state

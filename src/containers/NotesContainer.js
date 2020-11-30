@@ -1,5 +1,6 @@
 import React from 'react';
 import NoteCard from '../components/NoteCard'
+import notesByCategory from '../selectors/index'
 import { connect } from 'react-redux';
 import { Container, Row} from 'react-bootstrap';
 
@@ -28,7 +29,7 @@ class NotesContainer extends React.Component{
 }
 
 const mapStateToProps = state =>{
-    return {userId: state.login.id, notes: state.notes, categories: state.login.unique_categories}
+    return {userId: state.login.id, notes: notesByCategory(state), categories: state.login.unique_categories}
 }
 
 export default connect(mapStateToProps,null)(NotesContainer)

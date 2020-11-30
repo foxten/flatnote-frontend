@@ -1,5 +1,6 @@
 import React from 'react';
 import { loggingOut } from '../actions/login';
+import { newFilter } from '../actions/category';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,11 @@ const Navigation = (props) =>{
         props.urlInfo.push(`/login`)
     }
 
+    const filterId = (event) =>{
+        console.log(event.target.id)
+        props.newFilter(event.target.id)
+    }
+
 
     return (
         <Navbar sticky="top" className="justify-content-end">
@@ -24,8 +30,9 @@ const Navigation = (props) =>{
             <Nav.Item className="mr-auto">
             <NavDropdown title="Categories" id="basic-nav-dropdown">
                 {props.categories.map((category, index)=>{ 
-                    return <NavDropdown.Item>{category.name}</NavDropdown.Item>
+                    return <NavDropdown.Item  key={category.id} id={category.id} onClick={filterId}>{category.name}</NavDropdown.Item>
                 })}
+            <NavDropdown.Item id='all' onClick={filterId}>All Notes</NavDropdown.Item> 
             </NavDropdown>
             </Nav.Item>
             <Nav.Item>
@@ -40,7 +47,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    loggingOut
+    loggingOut,
+    newFilter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
