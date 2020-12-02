@@ -1,6 +1,7 @@
 import React from 'react';
 import NotesContainer from '../containers/NotesContainer';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 
@@ -12,13 +13,12 @@ class Dashboard extends React.Component{
     }
     
     render(){
-        console.log(this.props)
-    return (
-        <div>
-        <Navigation urlInfo={this.props.history}/>
-        <NotesContainer />
-        </div>
-    )
+        return (
+            <Container>
+                <Navigation urlInfo={this.props.history}/>
+                <NotesContainer />
+            </Container>
+        )
     }
 }
 

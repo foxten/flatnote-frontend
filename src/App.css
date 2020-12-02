@@ -36,11 +36,12 @@ a {
 }
 
 .card {
-  /* align-items: center; */
   text-align: center;
   background-color: #708D9E;
   font-size: calc(5px + 2vmin);
   margin: 20px ;
+  width: 20rem;
+  height: 18rem;
 }
 /* 
 .mr-auto.nav-item{
